@@ -1,11 +1,11 @@
 module.exports = function(app) {
 
-    app.get('/home', (req, res) => {
-        res.sendFile('/Users/katier./Desktop/Bootcamp/noteTaker.redford/Develop/public/index.html')
-    })
+    app.get('/', (req, res) => {
+        res.sendFile('/index.html');
+    });
 
     app.get('/notes', (req, res) => {
-        res.sendFile('/Users/katier./Desktop/Bootcamp/noteTaker.redford/Develop/public/notes.html')
-    })
+        res.sendFile(__dirname + 'public/notes.html');
+    });
 
 }
