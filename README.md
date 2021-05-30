@@ -1,4 +1,13 @@
-# Note Taker Starter Code
+# Note Taker -Redford
+  ## Description: 
+   
 
-things in the readme
-change the readme
+  ## Usage
+  finding the days weather in a given city
+  ## Screenshots
+  ![Alt text](weatherapp.png?raw=true "Title")
+  
+  ## Email
+  katharine.redford@gmial.com
+  ## github
+  https://github.com/katredford
