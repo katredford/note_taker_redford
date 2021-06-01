@@ -5,8 +5,8 @@
   ## Usage
   save and delete notes
   ## Screenshots
-  ![Alt text](Screen Shot.01.png?raw=true "Title")
-  ![Alt text](Screen Shot.02.png?raw=true "Title")
+  ![Alt text](ScreenShot.01.png?raw=true "Title")
+  ![Alt text](ScreenShot.02.png?raw=true "Title")
   
   ## Email
   katharine.redford@gmial.com
