@@ -2,6 +2,14 @@ const express = require('express')
 const app = express()
 const PORT = process.env.PORT || 3001;
 const fs = require('fs')
+
+const bodyParser = require('body-parser');
+
+// support parsing of application/json type post data
+app.use(bodyParser.json());
+
+//support parsing of application/x-www-form-urlencoded post data
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 // require('./routes')(app)
@@ -20,6 +28,38 @@ app.get('/api/notes', (req, res) => {
         res.json(JSON.parse(result))
     })
 })
+
+app.post('/api/notes', (req, res) => {
+    fs.readFile('./db/db.json', 'utf8', function(err, result){
+        var oldNotes = JSON.parse(result)
+        req.body.id = oldNotes.length + 1
+        oldNotes.push(req.body)
+        console.log(oldNotes)
+        console.log('note to add', req.body)
+
+        fs.writeFile('./db/db.json', JSON.stringify(oldNotes),'utf8', function(err, result){
+            res.json(oldNotes)
+        })
+    })
+})
+
+app.delete('/api/notes/:id', (req, res) => {
+    fs.readFile('./db/db.json', 'utf8', function(err, result){
+        var oldNotes = JSON.parse(result)
+        console.log('id of dude to delte!', req.params.id)
+
+        var newNotes = []
+        for (let i = 0; i < oldNotes.length; i++) {
+            if (oldNotes[i].id != req.params.id) {
+                newNotes.push(oldNotes[i])
+            }
+        }
+        fs.writeFile('./db/db.json', JSON.stringify(newNotes),'utf8', function(err, result){
+            res.json(newNotes)
+        })
+    })
+})
+
 
 // adding a note when we submit the form!!
 // req.body will the the stuff form the form!!!!
